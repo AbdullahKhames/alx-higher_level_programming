@@ -1,2 +1,9 @@
 #!/bin/bash
-python3 $PYCODE
+# Get the Python script file name from the environment variable
+PYTHON_SCRIPT="$PYFILE"
+
+# Set the path to your Python interpreter if needed
+PYTHON_INTERPRETER="/usr/bin/python3"
+
+# Run the Python script
+$PYTHON_INTERPRETER $PYTHON_SCRIPT
