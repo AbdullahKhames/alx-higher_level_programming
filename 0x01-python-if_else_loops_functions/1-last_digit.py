@@ -3,6 +3,7 @@ import random
 number = random.randint(-10000, 10000)
 tok = "Last digit of"
 num_str = str(number)
+assert isinstance(number, (int, float)), "TypeError"
 last_digit = int(num_str[-1])
 
 if number < 0:
