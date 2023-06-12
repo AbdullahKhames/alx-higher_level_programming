@@ -34,17 +34,12 @@ int is_palindrome(listint_t **head)
 		next = next->next;
 		counter++;
 	}
-	printf("%d\n",current->n);
-	printf("%d\n",next->n);
-	printf("%d\n", counter);
-
 	if (counter % 2 != 0)
 		return 0;
 
 	arr = malloc(sizeof(int) * counter);
 	if (arr == NULL)
 		return 0;
-	//printf("%d", start->n);
 	for (; i< counter; i++)
 	{
 		arr[i] = start->n;
