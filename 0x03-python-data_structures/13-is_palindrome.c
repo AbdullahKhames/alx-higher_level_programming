@@ -19,7 +19,10 @@ int is_palindrome(listint_t **head)
 	int j;
 
 	if (!head)
-		return -1;
+		return 0;
+	
+	if(*head == NULL)
+		return 1;
 	start = *head;
 	current = *head;
 	counter++;
