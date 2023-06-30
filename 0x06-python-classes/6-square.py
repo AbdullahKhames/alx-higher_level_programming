@@ -16,7 +16,7 @@ class Square:
         if validate_size(size):
             self.__size = size
         try:
-            if validate_position(position[0]) and validate_position(position[1]):
+            if valid_pos(position[0]) and valid_pos(position[1]):
                 self.__position = position
         except IndexError:
             raise TypeError("position must be a tuple of 2 positive integers")
@@ -45,7 +45,7 @@ class Square:
 
     @position.setter
     def position(self, value=(0, 0)):
-        if validate_position(value[0]) and validate_position(value[1]):
+        if valid_pos(value[0]) and valid_pos(value[1]):
             self.__position = value
 
     def my_print(self):
@@ -75,7 +75,7 @@ def validate_size(value):
     return True
 
 
-def validate_position(value):
+def valid_pos(value):
     if not isinstance(value, int) or value < 0:
         raise TypeError("position must be a tuple of 2 positive integers")
     return True
