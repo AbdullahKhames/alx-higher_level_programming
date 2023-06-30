@@ -72,9 +72,6 @@ def validate_size(value):
 
 
 def validate_position(value):
-    if not isinstance(value, tuple) or len(value) != 2:
-        raise TypeError("position must be a tuple of 2 positive integers")
-    if not all(isinstance(num, int) and num >= 0 for num in value):
+    if len(value) != 2 and  not isinstance(value, int) or value < 0:
         raise TypeError("position must be a tuple of 2 positive integers")
     return True
-
