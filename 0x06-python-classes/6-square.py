@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-this module shows getters and setters the pythony way
+this module shows getters and setters the python way
 """
 
 
@@ -41,7 +41,7 @@ class Square:
         return self.__position
 
     @position.setter
-    def position(self, value=(0,0)):
+    def position(self, value=(0, 0)):
         if validate_position(value[0]) and validate_position(value[1]):
             self.__position = value
 
@@ -58,6 +58,8 @@ class Square:
                 print(" ", end="")
             for j in range(self.size):
                 print("#", end="")
+            for d in range(self.position[1]):
+                print(" ", end="")
             print()
 
 
@@ -70,6 +72,6 @@ def validate_size(value):
 
 
 def validate_position(value):
-    if not isinstance(value, int) and value < 0:
+    if not isinstance(value, int) or value < 0:
         raise TypeError("position must be a tuple of 2 positive integers")
     return True
