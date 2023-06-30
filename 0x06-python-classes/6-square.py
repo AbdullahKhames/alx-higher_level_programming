@@ -15,8 +15,11 @@ class Square:
         """
         if validate_size(size):
             self.__size = size
-        if validate_position(position[0]) and validate_position(position[1]):
-            self.__position = position
+        try:
+            if validate_position(position[0]) and validate_position(position[1]):
+                self.__position = position
+        except IndexError:
+            raise TypeError("position must be a tuple of 2 positive integers")
 
     def area(self):
         """
