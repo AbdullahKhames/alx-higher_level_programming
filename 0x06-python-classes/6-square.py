@@ -54,12 +54,12 @@ class Square:
             return
 
         for i in range(self.size):
+            for _ in range(self.position[1]):
+                print()
             for c in range(self.position[0]):
                 print(" ", end="")
             for j in range(self.size):
                 print("#", end="")
-            for d in range(self.position[1]):
-                print(" ", end="")
             print()
 
 
