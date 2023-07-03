@@ -19,7 +19,8 @@ class Rectangle:
 
     @height.setter
     def height(self, height):
-        if int_validator(height, 'height') and value_validator(height, 'height'):
+        if int_validator(height, 'height') \
+                and value_validator(height, 'height'):
             self.__height = height
 
 
