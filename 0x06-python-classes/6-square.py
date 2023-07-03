@@ -79,3 +79,11 @@ def valid_pos(value):
     if not isinstance(value, int) or value < 0:
         raise TypeError("position must be a tuple of 2 positive integers")
     return True
+
+class User:
+    id = 1
+
+User.id = 98
+u = User()
+u.id = 89
+print(u.id)
