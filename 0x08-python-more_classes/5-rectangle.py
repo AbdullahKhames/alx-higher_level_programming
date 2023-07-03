@@ -61,10 +61,12 @@ class Rectangle:
         return rect
 
     def __repr__(self):
-        return "{}({}, {})".format(self.__class__.__name__, self.width, self.height)
+        return "{}({}, {})"\
+            .format(self.__class__.__name__, self.width, self.height)
 
     def __del__(self):
         print("Bye rectangle...")
+
 
 def int_validator(value, s):
     if not isinstance(value, int):
