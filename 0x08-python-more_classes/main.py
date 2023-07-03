@@ -5,7 +5,7 @@ print(r.width)
 print(r.height)
 print(r.__dict__)
 r.width = 5
-r.height = 20
+r.height = 0
 print(r.width)
 print(r.height)
 print(r.__dict__)

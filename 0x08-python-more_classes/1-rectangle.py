@@ -9,8 +9,12 @@ class Rectangle:
     rectangle class
     """
     def __init__(self, width=0, height=0):
-        self.__width = width
-        self.__height = height
+        if int_validator(width, 'width') \
+                and value_validator(width, 'width'):
+            self.__width = width
+        if int_validator(height, 'height') \
+                and value_validator(height, 'height'):
+            self.__height = height
 
     @property
     def width(self):
@@ -18,7 +22,8 @@ class Rectangle:
 
     @width.setter
     def width(self, width):
-        if int_validator(width, 'width') and value_validator(width, 'width'):
+        if int_validator(width, 'width')\
+                and value_validator(width, 'width'):
             self.__width = width
 
     @property
