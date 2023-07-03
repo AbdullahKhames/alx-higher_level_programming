@@ -61,7 +61,8 @@ class Rectangle:
         return rect
 
     def __repr__(self):
-        return "{}({}, {})".format(self.__class__.__name__, self.width, self.height)
+        return "{}({}, {})".\
+            format(self.__class__.__name__, self.width, self.height)
 
 
 def int_validator(value, s):
