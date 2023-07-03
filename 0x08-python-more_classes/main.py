@@ -64,12 +64,30 @@ try:
 except Exception as e:
     print("[{}] {}".format(e.__class__.__name__, e))
 
-    Rectangle = __import__('6-rectangle').Rectangle
+Rectangle = __import__('7-rectangle').Rectangle
 
-    my_rectangle_1 = Rectangle(2, 4)
-    my_rectangle_2 = Rectangle(2, 4)
-    print("{:d} instances of Rectangle".format(Rectangle.number_of_instances))
-    del my_rectangle_1
-    print("{:d} instances of Rectangle".format(Rectangle.number_of_instances))
-    del my_rectangle_2
-    print("{:d} instances of Rectangle".format(Rectangle.number_of_instances))
+my_rectangle_1 = Rectangle(8, 4)
+print(my_rectangle_1)
+print("--")
+my_rectangle_1.print_symbol = "&"
+print(my_rectangle_1)
+print("--")
+
+my_rectangle_2 = Rectangle(2, 1)
+print(my_rectangle_2)
+print("--")
+print("before c")
+
+Rectangle.print_symbol = "C"
+print(my_rectangle_2)
+print("--")
+
+my_rectangle_3 = Rectangle(7, 3)
+print(my_rectangle_3)
+
+print("--")
+
+my_rectangle_3.print_symbol = ["C", "is", "fun!"]
+print(my_rectangle_3)
+
+print("--")
