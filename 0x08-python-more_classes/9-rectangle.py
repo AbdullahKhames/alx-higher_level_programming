@@ -7,11 +7,16 @@ rectangle module
 class Rectangle:
     """
     rectangle class
+    with 2 public static attributes
     """
     number_of_instances = 0
     print_symbol = "#"
 
     def __init__(self, width=0, height=0):
+        """
+        init method to define instance public
+        and protected and private fields for class
+        """
         if int_validator(width, 'width') \
                 and value_validator(width, 'width'):
             self.__width = width
@@ -64,12 +69,33 @@ class Rectangle:
         return rect
 
     def __repr__(self):
+        """returns string representation of class"""
         return "{}({}, {})" \
             .format(self.__class__.__name__, self.width, self.height)
 
     def __del__(self):
+        """prints rught befort obj destruction"""
         self.__class__.number_of_instances -= 1
         print("Bye rectangle...")
+
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        """
+        static method to determine which rect is bigger
+        :param rect_1: first rect to check
+        :param rect_2: second rect to check
+        :return: bigger rect
+        """
+        if rect_validator(rect_1, 'rect_1') \
+                and rect_validator(rect_2, 'rect_2'):
+            return rect_1 \
+                if rect_1.area() >= rect_2.area() else rect_2
+
+    @classmethod
+    def square(cls, size=0):
+        if int_validator(size, 'size') \
+                and value_validator(size, 'size'):
+            return Rectangle(size, size)
 
 
 def int_validator(value, s):
@@ -81,4 +107,10 @@ def int_validator(value, s):
 def value_validator(value, s):
     if value < 0:
         raise ValueError(s + ' must be >= 0')
+    return True
+
+
+def rect_validator(rectangle, s):
+    if not isinstance(rectangle, Rectangle):
+        raise TypeError(s + ' must be an instance of Rectangle')
     return True
