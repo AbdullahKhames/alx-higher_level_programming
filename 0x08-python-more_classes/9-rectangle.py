@@ -93,9 +93,7 @@ class Rectangle:
 
     @classmethod
     def square(cls, size=0):
-        if int_validator(size, 'size') \
-                and value_validator(size, 'size'):
-            return Rectangle(size, size)
+        return Rectangle(size, size)
 
 
 def int_validator(value, s):
