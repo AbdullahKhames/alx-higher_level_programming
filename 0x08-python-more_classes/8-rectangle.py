@@ -82,8 +82,8 @@ class Rectangle:
     def bigger_or_equal(rect_1, rect_2):
         if rect_validator(rect_1, 'rect_1') \
                 and rect_validator(rect_2, 'rect_2'):
-            return rect_1.area() \
-                if rect_1.area() > rect_2.area() else rect_2.area()
+            return rect_1\
+                if rect_1.area() >= rect_2.area() else rect_2
 
 
 def int_validator(value, s):
