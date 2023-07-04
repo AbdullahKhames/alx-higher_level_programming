@@ -9,6 +9,7 @@ class Rectangle:
     rectangle class
     """
     number_of_instances = 0
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         if int_validator(width, 'width') \
@@ -17,7 +18,6 @@ class Rectangle:
         if int_validator(height, 'height') \
                 and value_validator(height, 'height'):
             self.__height = height
-            self.print_symbol = "#"
         self.__class__.number_of_instances += 1
 
     @property
