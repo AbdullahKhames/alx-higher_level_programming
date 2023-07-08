@@ -25,3 +25,8 @@ first_name must be a string
 ... except TypeError as ex:
 ...     print(ex.args[0])
 last_name must be a string
+>>> try:
+...     say_my_name()
+... except TypeError as ex:
+...     print(ex.args[0])
+first_name must be a string
