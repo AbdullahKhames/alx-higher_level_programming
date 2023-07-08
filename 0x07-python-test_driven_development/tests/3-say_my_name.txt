@@ -1,0 +1,27 @@
+#importing
+>>> from importlib import import_module
+>>> say_my_name = import_module('3-say_my_name').say_my_name
+
+>>> say_my_name("ahmed", "mohamed")
+My name is ahmed mohamed
+
+>>> say_my_name("adel")
+My name is adel
+
+>>> try:
+...     say_my_name(None, "mohamed")
+... except TypeError as ex:
+...     print(ex.args[0])
+first_name must be a string
+
+>>> try:
+...     say_my_name(True, "mohamed")
+... except TypeError as ex:
+...     print(ex.args[0])
+first_name must be a string
+
+>>> try:
+...     say_my_name("True", 1000)
+... except TypeError as ex:
+...     print(ex.args[0])
+last_name must be a string
