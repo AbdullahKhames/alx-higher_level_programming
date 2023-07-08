@@ -45,3 +45,9 @@ div must be a number
 ... except ZeroDivisionError as ex:
 ...     print(ex.args[0])
 division by zero
+
+>>> try:
+...      matrix_divided()
+... except ZeroDivisionError as ex:
+...     print(ex.args[0])
+division by zero

@@ -4,13 +4,18 @@ This is the "02-matrix_div" module.
 """
 
 
-def matrix_divided(matrix, div):
+def matrix_divided(matrix=None, div=None):
     """
     the function to divide a matrix
     :param matrix: a list of lists of integers or floats
     :param div:must be a number (integer or float)
     :return:a new matrix
     """
+    if matrix is None:
+        raise TypeError("matrix cannot be none")
+
+    if div is None:
+        raise TypeError("div cannot be none")
 
     check_div(div)
     check_zero(div)
@@ -25,9 +30,10 @@ def matrix_divided(matrix, div):
     return new_outer_matrix
 
 
-
 def divide(x, y):
     return x / y
+
+
 def list_checker(lists):
     for x in lists:
         for y in x:
@@ -53,9 +59,7 @@ def check_div(x):
         raise TypeError("div must be a number")
 
 
-def size_checker(lists=None):
-    if lists is None:
-        lists = [[], []]
+def size_checker(lists):
     first_size = 0
     idx = 0
     for x in lists:
@@ -69,4 +73,3 @@ def size_checker(lists=None):
             raise TypeError("Each row of the matrix must have the same size")
         idx = 0
     return True
-
