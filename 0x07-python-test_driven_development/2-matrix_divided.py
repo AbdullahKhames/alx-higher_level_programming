@@ -11,12 +11,6 @@ def matrix_divided(matrix=None, div=None):
     :param div:must be a number (integer or float)
     :return:a new matrix
     """
-    if matrix is None:
-        raise TypeError("matrix cannot be none")
-
-    if div is None:
-        raise TypeError("div cannot be none")
-
     check_div(div)
     check_zero(div)
     list_checker(matrix)
