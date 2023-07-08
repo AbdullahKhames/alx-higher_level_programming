@@ -13,10 +13,7 @@ def say_my_name(first_name=None, last_name=""):
     """
     check_value(first_name, "first_name")
     check_value(last_name, "last_name")
-    if last_name == "":
-        print(f"My name is {first_name}")
-    else:
-        print(f"My name is {first_name} {last_name}")
+    print(f"My name is {first_name} {last_name}")
 
 
 def check_value(val, s):
