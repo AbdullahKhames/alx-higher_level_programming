@@ -6,7 +6,7 @@
 My name is ahmed mohamed
 
 >>> say_my_name("adel")
-My name is adel
+My name is adel 
 
 >>> try:
 ...     say_my_name(None, "mohamed")
