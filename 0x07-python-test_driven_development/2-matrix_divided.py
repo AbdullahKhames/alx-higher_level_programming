@@ -40,7 +40,8 @@ def check_value(x):
     if isinstance(x, int) or isinstance(x, float):
         return True
     else:
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+        raise TypeError("matrix must be a matrix (list of lists) "
+                        "of integers/floats")
 
 
 def check_zero(x):
