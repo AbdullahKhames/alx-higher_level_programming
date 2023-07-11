@@ -1,0 +1,33 @@
+>>> from importlib import import_module
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("height", 7)
+
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("height", "7")
+... except TypeError as e:
+...     print(e)
+height must be an integer
+
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("height", False)
+... except TypeError as e:
+...     print(e)
+height must be an integer
+
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("height", 1.5)
+... except TypeError as e:
+...     print(e)
+height must be an integer
+
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("height", 'c')
+... except TypeError as e:
+...     print(e)
+height must be an integer
