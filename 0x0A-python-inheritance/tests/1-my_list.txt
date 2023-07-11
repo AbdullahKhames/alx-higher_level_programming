@@ -1,0 +1,14 @@
+>>> from importlib import import_module
+>>> MyList = __import__('1-my_list').MyList
+
+>>> ls = MyList([1, 2, 3, 4, 5, 6])
+>>> ls.print_sorted()
+[1, 2, 3, 4, 5, 6]
+
+>>> ls = MyList([ 4, 5, 6, 1, 2, 3])
+>>> ls.print_sorted()
+[1, 2, 3, 4, 5, 6]
+
+>>> ls = MyList([1, 2, 3, "4", 5, 6])
+>>> ls.print_sorted()
+TypeError: value must be int
