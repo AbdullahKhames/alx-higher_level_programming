@@ -10,7 +10,10 @@ def read_file(filename=""):
     :param filename: file to open
     :return:no return
     """
-    with open(filename, encoding="UTF-8") as fp:
-        red = fp.read()
-        print(red)
-        return red
+    try:
+        with open(filename, encoding="UTF-8") as fp:
+            red = fp.read()
+            print(red)
+            return red
+    except Exception as e:
+        print(e)
