@@ -11,7 +11,8 @@ class Student:
         self.age = age
 
     def __str__(self):
-        return "[Student] firstname: {}, lastname: {}, age: {}".format(self.first_name, self.last_name, self.age)
+        return "[Student] firstname: {}, lastname: {}, age: {}"\
+            .format(self.first_name, self.last_name, self.age)
 
     def to_json(self):
         return self.__dict__
