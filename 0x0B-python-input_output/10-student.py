@@ -20,5 +20,8 @@ class Student:
             return self.__dict__
         else:
             for att in attrs:
-                dict_obj = {att: getattr(self, att)}
+                try:
+                    dict_obj = {att: getattr(self, att)}
+                except Exception as e:
+                    print(e)
             return dict_obj
