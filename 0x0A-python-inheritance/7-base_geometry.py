@@ -12,7 +12,7 @@ class BaseGeometry:
     def area(self):
         raise Exception("area() is not implemented")
 
-    def integer_validator(self, name, value):
+    def integer_validator(self, name=None, value=None):
         """
         value validator
         :param name: name

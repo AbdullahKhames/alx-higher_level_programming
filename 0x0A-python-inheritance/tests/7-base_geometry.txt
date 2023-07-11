@@ -31,3 +31,66 @@ height must be an integer
 ... except TypeError as e:
 ...     print(e)
 height must be an integer
+
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("height", None)
+... except TypeError as e:
+...     print(e)
+height must be an integer
+
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("height", [2,3,3])
+... except TypeError as e:
+...     print(e)
+height must be an integer
+
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("height", -5)
+... except ValueError as e:
+...     print(e)
+height must be greater than 0
+
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("height", 0)
+... except ValueError as e:
+...     print(e)
+height must be greater than 0
+
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("height", [2])
+... except TypeError as e:
+...     print(e)
+height must be an integer
+
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("height", [2,])
+... except TypeError as e:
+...     print(e)
+height must be an integer
+
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.area()
+... except Exception as e:
+...     print(e)
+area() is not implemented
+
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator()
+... except TypeError as e:
+...     print(e)
+None must be an integer
+
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("height")
+... except TypeError as e:
+...     print(e)
+height must be an integer
