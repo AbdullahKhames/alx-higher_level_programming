@@ -21,6 +21,8 @@ try:
     other_ls = load_from_json_file(filename)
 except json.JSONDecodeError as e:
     print(e)
+except FileNotFoundError as e:
+    print(e)
 if type(other_ls) is list and len(other_ls) != 0:
     ls.extend(other_ls)
 save_to_json_file(ls, filename)
