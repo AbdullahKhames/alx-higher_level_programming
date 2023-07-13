@@ -12,5 +12,4 @@ def read_file(filename=""):
     """
     with open(filename, 'r', encoding="UTF-8") as fp:
         red = fp.read()
-        print(red)
-        return red
+        print(red, end="")

@@ -19,16 +19,18 @@ class Student:
         if attrs is None:
             return self.__dict__
         else:
+            dict_obj = {}
             for att in attrs:
-                try:
-                    dict_obj = {att: getattr(self, att)}
-                except Exception as e:
-                    print(e)
+                if hasattr(self, att):
+                    dict_obj[att] = getattr(self, att)
             return dict_obj
 
     def reload_from_json(self, json):
         if not type(json) is dict:
             return
-        self.first_name = json["first_name"]
-        self.last_name = json["last_name"]
-        self.age = json["age"]
+        if self is None:
+            Student(json["first_name"], json["last_name"], json["age"])
+        else:
+            self.first_name = json["first_name"]
+            self.last_name = json["last_name"]
+            self.age = json["age"]

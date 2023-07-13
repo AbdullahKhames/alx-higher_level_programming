@@ -15,17 +15,21 @@ def pascal_triangle(n):
     if n <= 0:
         return []
     ls = []
+    opt = [0, 0]
     for row in range(n):
         print(row)
-        inner_ls = init_new_row(row)
+        inner_ls = [0]
+        opt = init_new_row(row, inner_ls, opt)
         if check_each_row(row, inner_ls):
             ls.append(inner_ls)
         # init_diagonal(0, ls)
     return ls
 
 
-def init_new_row(row):
-    ls = [0]
+def init_new_row(row, ls=None, opt=[0, 0]):
+    ret = 0
+    if ls is None:
+        ls = [0]
     for col in range(row):
         ls.append(col)
     if row == 0:
@@ -36,7 +40,19 @@ def init_new_row(row):
     if row >= 2:
         ls[1] = row
         ls[-2] = row
-    return ls
+        num = int(row / 2)
+        print(f"mid index is {num}")
+        ret = [row, ls[num] + ls[num+1]]
+        if row > 3:
+            x = opt[0] + 1
+            if x % 2 == 0:
+                ls[int(x / 2)] = opt[1]
+            else:
+                ls[int(x / 2)] = opt[1]
+                ls[int(x / 2) + 1] = opt[1]
+
+    print(f"opt is {opt}")
+    return ret
 
 
 def check_each_row(row=0, ls=None):

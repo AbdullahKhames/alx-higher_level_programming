@@ -11,7 +11,7 @@ class Student:
         self.age = age
 
     def __str__(self):
-        return "[Student] firstname: {}, lastname: {}, age: {}"\
+        return "[Student] firstname: {}, lastname: {}, age: {}" \
             .format(self.first_name, self.last_name, self.age)
 
     def to_json(self, attrs=None):
@@ -19,9 +19,8 @@ class Student:
         if attrs is None:
             return self.__dict__
         else:
+            dict_obj = {}
             for att in attrs:
-                try:
-                    dict_obj = {att: getattr(self, att)}
-                except Exception as e:
-                    print(e)
+                if hasattr(self, att):
+                    dict_obj[att] = getattr(self, att)
             return dict_obj

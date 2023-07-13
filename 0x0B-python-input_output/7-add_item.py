@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
- 7. Load, add, save
+Script that adds all arguments to a Python list, and then saves them to a file
 """
 import json
 import sys
