@@ -17,12 +17,9 @@ def pascal_triangle(n):
     ls = []
     opt = [0]
     for row in range(n):
-        print(row)
         inner_ls = [1]
         opt = init_new_row(row, inner_ls, opt)
-        print(f"opt is {opt[0]}")
         ls.append(inner_ls)
-        # init_diagonal(0, ls)
     return ls
 
 
@@ -50,21 +47,16 @@ def init_new_row(row, ls=None, opt=[]):
             if row == 5:
                 temp = ls[1]
                 for i in ls[2:-1]:
-                    print(i,end=" ")
                     accum_ls.append((temp + i))
                     temp = i
                 return accum_ls
             ret = [ls[x] + ls[x + 1]]
-            print(f"accumulatorr {accum_ls}")
         return ret
     else:
         for k, j in enumerate(ls[2:-2]):
-            print(f"j value is{j}")
             ls[k + 2] = opt[k]
         temp = ls[1]
-        print(ls)
         for i in ls[2:-1]:
-            print(i, end=" ")
             accum_ls.append((temp + i))
             temp = i
         return accum_ls
