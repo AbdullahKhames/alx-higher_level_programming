@@ -15,71 +15,56 @@ def pascal_triangle(n):
     if n <= 0:
         return []
     ls = []
-    opt = [0, 0]
+    opt = [0]
     for row in range(n):
         print(row)
-        inner_ls = [0]
+        inner_ls = [1]
         opt = init_new_row(row, inner_ls, opt)
-        if check_each_row(row, inner_ls):
-            ls.append(inner_ls)
+        print(f"opt is {opt[0]}")
+        ls.append(inner_ls)
         # init_diagonal(0, ls)
     return ls
 
 
-def init_new_row(row, ls=None, opt=[0, 0]):
-    ret = 0
+def init_new_row(row, ls=None, opt=[]):
+    ret = [1]
+    accum_ls = []
     if ls is None:
-        ls = [0]
+        ls = [1]
+
     for col in range(row):
-        ls.append(col)
-    if row == 0:
-        ls[row] = 1
-    else:
-        ls[0] = 1
-        ls[-1] = 1
-    if row >= 2:
-        ls[1] = row
-        ls[-2] = row
-        num = int(row / 2)
-        print(f"mid index is {num}")
-        ret = [row, ls[num] + ls[num+1]]
-        if row > 3:
-            x = opt[0] + 1
-            if x % 2 == 0:
-                ls[int(x / 2)] = opt[1]
-            else:
-                ls[int(x / 2)] = opt[1]
-                ls[int(x / 2) + 1] = opt[1]
+        ls.append(1)
 
-    print(f"opt is {opt}")
-    return ret
-
-
-def check_each_row(row=0, ls=None):
-    if ls is None:
-        ls = []
-    accumulator = 0
     for col in ls:
-        accumulator += col
-    return accumulator == get_pow(row)
-
-
-def get_pow(n=0):
-    return 2 ** n
-
-
-def init_diagonal(row=0, ls=None):
-    if ls is None:
-        ls = []
-
-    for count, new_list in enumerate(ls):
-        if count == 0 or count == 1:
-            continue
-        new_list[1] = count
-        new_list[-2] = count
-
-
-print(pascal_triangle(7))
-print(check_each_row(2, [1, 2, 1]))
-
-
+        if row > 3:
+            ls[1] = row
+            ls[-2] = row
+    if row <= 5:
+        if opt[0] > 0:
+            x = int(row / 2)
+            if (row + 1) % 2 == 0:
+                ls[x] = opt[0]
+                ls[x + 1] = opt[0]
+            else:
+                ls[int(x)] = opt[0]
+            if row == 5:
+                temp = ls[1]
+                for i in ls[2:-1]:
+                    print(i,end=" ")
+                    accum_ls.append((temp + i))
+                    temp = i
+                return accum_ls
+            ret = [ls[x] + ls[x + 1]]
+            print(f"accumulatorr {accum_ls}")
+        return ret
+    else:
+        for k, j in enumerate(ls[2:-2]):
+            print(f"j value is{j}")
+            ls[k + 2] = opt[k]
+        temp = ls[1]
+        print(ls)
+        for i in ls[2:-1]:
+            print(i, end=" ")
+            accum_ls.append((temp + i))
+            temp = i
+        return accum_ls
