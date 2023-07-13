@@ -17,12 +17,10 @@ for count, item in enumerate(sys.argv):
         continue
     ls.append(item)
 other_ls = []
-
 try:
-    json_list = load_from_json_file(filename)
-except FileNotFoundError:
-    json_list = []
-
+    other_ls = load_from_json_file(filename)
+except json.JSONDecodeError as e:
+    print(e)
 if type(other_ls) is list and len(other_ls) != 0:
     ls.extend(other_ls)
 save_to_json_file(ls, filename)
