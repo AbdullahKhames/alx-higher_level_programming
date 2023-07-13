@@ -26,7 +26,7 @@ class Student:
             return dict_obj
 
     def reload_from_json(self, json):
-        if not type(json) is dict:
+        if not type(json) is dict or json.__len__() == 0:
             return
         if self is None:
             Student(json["first_name"], json["last_name"], json["age"])
