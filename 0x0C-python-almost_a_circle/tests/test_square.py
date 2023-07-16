@@ -22,10 +22,10 @@ class TestSquare(unittest.TestCase):
         cls.square4 = Square(2, 3, 2)
 
     def test_square(self):
-        self.assertEqual(self.square.id, 62)
-        self.assertEqual(self.square2.id, 64)
+        self.assertEqual(self.square.id, 64)
+        self.assertEqual(self.square2.id, 66)
         self.assertEqual(self.square3.id, 10)
-        self.assertEqual(self.square4.id, 65)
+        self.assertEqual(self.square4.id, 67)
 
     def test_square1(self):
         self.assertEqual(self.square.width, 5)

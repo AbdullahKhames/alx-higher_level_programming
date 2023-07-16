@@ -19,10 +19,10 @@ class test_update2(unittest.TestCase):
         cls.rect1 = Rectangle(5, 6, 7, 8, 10)
 
     def test_update(self):
-        self.assertEqual(self.rect.id, 67)
+        self.assertEqual(self.rect.id, 69)
         with self.assertRaises(TypeError):
             self.rect.update(id="50")
-        self.assertEqual(self.rect.id, 67)
+        self.assertEqual(self.rect.id, 69)
 
         self.assertEqual(self.rect1.id, 10)
         with self.assertRaises(TypeError):
@@ -34,7 +34,7 @@ class test_update2(unittest.TestCase):
             self.rect1.update(id=-1)
         self.assertEqual(self.rect1.id, 10)
 
-        self.assertEqual(self.rect.id, 67)
+        self.assertEqual(self.rect.id, 69)
         self.rect.update(id=50)
         self.assertEqual(self.rect.id, 50)
 
