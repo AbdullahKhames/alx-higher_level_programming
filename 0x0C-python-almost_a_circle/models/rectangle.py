@@ -18,14 +18,14 @@ class Rectangle(Base):
         if width is None or height is None \
                 or x is None or y is None:
             raise TypeError("cannot be None")
-        int_validator(width, 'width')
-        int_validator(height, 'height')
-        int_validator(x, 'x')
-        int_validator(y, 'y')
-        value_validator(width, 'width')
-        value_validator(height, 'height')
-        dimensions_validator(x, 'x')
-        dimensions_validator(y, 'y')
+        self.__class__.int_validator(width, 'width')
+        self.__class__.int_validator(height, 'height')
+        self.__class__.int_validator(x, 'x')
+        self.__class__.int_validator(y, 'y')
+        self.__class__.value_validator(width, 'width')
+        self.__class__.value_validator(height, 'height')
+        self.__class__.dimensions_validator(x, 'x')
+        self.__class__.dimensions_validator(y, 'y')
 
         super().__init__(id)
         self.__width = width
@@ -46,8 +46,8 @@ class Rectangle(Base):
         setter for property
         """
         Rectangle.none_checker(width)
-        int_validator(width, 'width')
-        value_validator(width, 'width')
+        self.__class__.int_validator(width, 'width')
+        self.__class__.value_validator(width, 'width')
         self.__width = width
 
     @property
@@ -62,8 +62,8 @@ class Rectangle(Base):
         """
         setter for property
         """
-        int_validator(height, 'width')
-        value_validator(height, 'width')
+        self.__class__.int_validator(height, 'width')
+        self.__class__.value_validator(height, 'width')
         Rectangle.none_checker(height)
         self.__height = height
 
@@ -80,8 +80,8 @@ class Rectangle(Base):
         setter for property
         """
         Rectangle.none_checker(x)
-        int_validator(x, 'x')
-        dimensions_validator(x, 'x')
+        self.__class__.int_validator(x, 'x')
+        self.__class__.dimensions_validator(x, 'x')
         self.__x = x
 
     @property
@@ -97,8 +97,8 @@ class Rectangle(Base):
         setter for property
         """
         Rectangle.none_checker(y)
-        int_validator(y, 'y')
-        dimensions_validator(y, 'y')
+        self.__class__.int_validator(y, 'y')
+        self.__class__.dimensions_validator(y, 'y')
         self.__y = y
 
     @staticmethod
@@ -130,36 +130,59 @@ class Rectangle(Base):
                 print("#", end="")
             print()
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """
         update instance
         :param args: args to be updated
+        :param kwargs: kwargs to be updated if ars in none
         :return: none
         """
+        attribute_names = ['id', 'width', 'height', 'x', 'y']
         for k, v in enumerate(args):
-            if k == 0:
-                self.id = v
-            elif k == 1:
-                self.__class__.none_checker(v)
-                int_validator(v, 'width')
-                value_validator(v, 'width')
-                self.__width = v
-            elif k == 2:
-                self.__class__.none_checker(v)
-                int_validator(v, 'height')
-                value_validator(v, 'height')
-                self.__height = v
-            elif k == 3:
-                self.__class__.none_checker(v)
-                int_validator(v, 'x')
-                dimensions_validator(v, 'x')
-                self.__x = v
-            elif k == 4:
-                self.__class__.none_checker(v)
-                int_validator(v, 'y')
-                dimensions_validator(v, 'y')
-                self.__y = v
-        pass
+            attribute = attribute_names[k]
+            self.__class__.none_checker(v)
+            self.__class__.int_validator(v, attribute)
+            if attribute in ('x', 'y'):
+                self.__class__.dimensions_validator(v, attribute)
+            else:
+                self.__class__.value_validator(v, attribute)
+            setattr(self, attribute, v)
+
+            # if k == 0:
+            #     self.__class__.none_checker(v)
+            #     self.__class__.int_validator(v, "id")
+            #     self.__class__.value_validator(v, "id")
+            #     self.id = v
+            # elif k == 1:
+            #     self.__class__.none_checker(v)
+            #     self.__class__.int_validator(v, 'width')
+            #     self.__class__.value_validator(v, 'width')
+            #     self.__width = v
+            # elif k == 2:
+            #     self.__class__.none_checker(v)
+            #     self.__class__.int_validator(v, 'height')
+            #     self.__class__.value_validator(v, 'height')
+            #     self.__height = v
+            # elif k == 3:
+            #     self.__class__.none_checker(v)
+            #     self.__class__.int_validator(v, 'x')
+            #     self.__class__.dimensions_validator(v, 'x')
+            #     self.__x = v
+            # elif k == 4:
+            #     self.__class__.none_checker(v)
+            #     self.__class__.int_validator(v, 'y')
+            #     self.__class__.dimensions_validator(v, 'y')
+            #     self.__y = v
+
+        if len(args) == 0:
+            for key, val in kwargs.items():
+                self.__class__.int_validator(val, key)
+                if key in ('x', 'y'):
+                    self.__class__.dimensions_validator(val, key)
+                else:
+                    self.__class__.value_validator(val, key)
+                if hasattr(self, key):
+                    setattr(self, key, val)
 
     def __str__(self):
         """
@@ -167,36 +190,40 @@ class Rectangle(Base):
         """
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
 
+    @staticmethod
+    def int_validator(value, s):
+        """
+        int calidator
+        :param value: value to validate
+        :param s: the name of parameter
+        :return: True in case all good
+        """
+        if not isinstance(value, int):
+            raise TypeError(s + ' must be an integer')
+        return True
 
-def int_validator(value, s):
-    """
-    int calidator
-    :param value: value to validate
-    :param s: the name of parameter
-    :return: True in case all good
-    """
-    if not isinstance(value, int):
-        raise TypeError(s + ' must be an integer')
-    return True
+    @staticmethod
+    def value_validator(value, s):
+        """
+        validates the value sent to it
+        :param value:value t o be checked
+        :param s: param name
+        :return: none
+        """
+        if value <= 0:
+            raise ValueError(s + ' must be > 0')
 
+    @staticmethod
+    def dimensions_validator(value, s):
+        """
+        dimensions validator
+        :param value: value to be checked
+        :param s: param name
+        :return: none
+        """
+        if value < 0:
+            raise ValueError(s + ' must be >= 0')
 
-def value_validator(value, s):
-    """
-    validates the value sent to it
-    :param value:value t o be checked
-    :param s: param name
-    :return: none
-    """
-    if value <= 0:
-        raise ValueError(s + ' must be > 0')
+    def to_dictionary(self):
+        return {'x': self.x, 'y': self.y, 'id': self.id, 'height': self.height, 'width': self.width}
 
-
-def dimensions_validator(value, s):
-    """
-    dimensions validator
-    :param value: value to be checked
-    :param s: param name
-    :return: none
-    """
-    if value < 0:
-        raise ValueError(s + ' must be >= 0')

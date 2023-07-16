@@ -100,6 +100,35 @@ class test_disp2(unittest.TestCase):
 #
 """)
 
+    def test_to_file(self):
+        lse = [
+            self.rect3,
+            self.rect4,
+            self.rect5
+        ]
+        Rectangle.save_to_file(lse)
+        ch = None
+        with open("Rectangle.json") as fp:
+            ch = fp.read()
+
+        self.assertEqual(
+            '[{"x": 3, "y": 4, "id": 10, "height": 2, "width": 1}, {"x": 5, "y": 0, "id": 49, "height": 3, '
+            '"width": 2}, {"x": 0, "y": 6, "id": 50, "height": 2, "width": 1}]',
+            ch
+        )
+
+    def test_to_file1(self):
+        lse = []
+        Rectangle.save_to_file(lse)
+        ch = None
+        with open("Rectangle.json") as fp:
+            ch = fp.read()
+
+        self.assertEqual(
+            '[]',
+            ch
+        )
+
 
 if __name__ == '__main__':
     unittest.main()

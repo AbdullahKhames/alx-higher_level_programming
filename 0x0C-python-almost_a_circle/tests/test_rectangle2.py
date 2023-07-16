@@ -127,3 +127,11 @@ class test_rect(unittest.TestCase):
         self.rect.y = 50
         self.assertEqual(self.rect.y, 50)
 
+    def test_dic_to_ins(self):
+        dic = {'height': 2, 'width': 1, 'id': 1, 'x': 5, 'y': 5}
+        self.assertEqual("[Rectangle] (1) 5/5 - 1/2",
+                         str(Rectangle.create(**dic)))
+
+
+if __name__ == '__main__':
+    unittest.main()
