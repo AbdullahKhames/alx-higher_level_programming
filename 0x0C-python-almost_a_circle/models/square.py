@@ -4,7 +4,7 @@ square module
 """
 
 
-from models.rectangle import Rectangle
+Rectangle = __import__('rectangle').Rectangle
 
 
 class Square(Rectangle):
