@@ -3,9 +3,32 @@
 base class
 """
 
-
 import json
 import turtle
+
+
+def square_lines_to_dicts(lines=None):
+    from models.square import Square
+    if lines is None:
+        return {}
+    list_objs = []
+    for line in lines:
+        s = line.split(',')
+        sq = Square(int(s[1]), int(s[2]), int(s[3]), int(s[0]))
+        list_objs.append(sq)
+    return list_objs
+
+
+def rect_lines_to_dicts(lines):
+    from models.rectangle import Rectangle
+    if lines is None:
+        return {}
+    list_objs = []
+    for line in lines:
+        s = line.split(',')
+        r = Rectangle(int(s[1]), int(s[2]), int(s[3]), int(s[4]), int(s[0]))
+        list_objs.append(r)
+    return list_objs
 
 
 class Base:
@@ -113,3 +136,27 @@ class Base:
 
         # Close the turtle graphics window when done
         turtle.done()
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        from models.rectangle import Rectangle
+        from models.square import Square
+        filename = cls.__name__ + ".csv"
+        with open(filename, 'w') as fp:
+            for obj in list_objs:
+                if type(obj) is Rectangle:
+                    s = f"{obj.id},{obj.width},{obj.height},{obj.x},{obj.y}\n"
+                    fp.write(s)
+                elif type(obj) is Square:
+                    s = f"{obj.id},{obj.size},{obj.x},{obj.y}\n"
+                    fp.write(s)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        filename = cls.__name__ + ".csv"
+        with open(filename) as fp:
+            lines = fp.readlines()
+        if cls.__name__ == 'Rectangle':
+            return rect_lines_to_dicts(lines)
+        elif cls.__name__ == 'Square':
+            return square_lines_to_dicts(lines)
