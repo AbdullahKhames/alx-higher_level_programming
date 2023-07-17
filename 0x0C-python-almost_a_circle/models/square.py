@@ -3,14 +3,14 @@
 square module
 """
 
-
-Rectangle = __import__('rectangle').Rectangle
+from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
     """
     class square
     """
+
     def __init__(self, size, x=0, y=0, id=None):
         """
         method to initialize square
