@@ -5,6 +5,7 @@ base class
 
 
 import json
+import turtle
 
 
 class Base:
@@ -76,3 +77,39 @@ class Base:
             instances.append(instance)
 
         return instances
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        screen = turtle.Screen()
+
+        t = turtle.Turtle()
+
+        t.speed(1)
+
+        for rect in list_rectangles:
+            t.penup()
+            t.goto(rect.x, rect.y)
+            t.pendown()
+            t.fillcolor('blue')  # Set the fill color to blue
+            t.begin_fill()  # Begin the shape filling
+            for _ in range(2):
+                t.forward(rect.width)
+                t.left(90)
+                t.forward(rect.height)
+                t.left(90)
+            t.end_fill()  # End the shape filling
+
+        # Draw squares
+        for square in list_squares:
+            t.penup()
+            t.goto(square.x, square.y)
+            t.pendown()
+            t.fillcolor('red')  # Set the fill color to red
+            t.begin_fill()  # Begin the shape filling
+            for _ in range(4):
+                t.forward(square.size)
+                t.left(90)
+            t.end_fill()  # End the shape filling
+
+        # Close the turtle graphics window when done
+        turtle.done()
