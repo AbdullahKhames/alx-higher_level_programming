@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""
+test area method
+"""
 import unittest
 from models.base import Base
 
