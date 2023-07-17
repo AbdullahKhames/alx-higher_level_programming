@@ -103,8 +103,6 @@ class Base:
 
     @staticmethod
     def draw(list_rectangles, list_squares):
-        screen = turtle.Screen()
-
         t = turtle.Turtle()
 
         t.speed(1)
