@@ -10,9 +10,6 @@ class Rectangle(Base):
         """
         init method to initialize the class
         """
-        if width is None or height is None \
-                or x is None or y is None:
-            raise TypeError("cannot be None")
         self.__class__.int_validator(width, 'width')
         self.__class__.int_validator(height, 'height')
         self.__class__.int_validator(x, 'x')
@@ -135,6 +132,8 @@ class Rectangle(Base):
         attribute_names = ['id', 'width', 'height', 'x', 'y']
         for k, v in enumerate(args):
             attribute = attribute_names[k]
+            if attribute == 'id' and v is None:
+                continue
             self.__class__.none_checker(v)
             self.__class__.int_validator(v, attribute)
             if attribute in ('x', 'y'):
@@ -171,6 +170,8 @@ class Rectangle(Base):
 
         if len(args) == 0:
             for key, val in kwargs.items():
+                if key == 'id' and val is None:
+                    continue
                 self.__class__.int_validator(val, key)
                 if key in ('x', 'y'):
                     self.__class__.dimensions_validator(val, key)
@@ -194,7 +195,7 @@ class Rectangle(Base):
         :param s: the name of parameter
         :return: True in case all good
         """
-        if not isinstance(value, int):
+        if not type(value) is int:
             raise TypeError(s + ' must be an integer')
         return True
 

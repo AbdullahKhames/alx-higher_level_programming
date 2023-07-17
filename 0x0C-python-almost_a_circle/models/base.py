@@ -55,10 +55,6 @@ class Base:
             self.__class__.__nb_objects += 1
             self.id = self.__class__.__nb_objects
         else:
-            if not type(id) is int:
-                raise TypeError("id must be an integer")
-            if id <= 0:
-                raise ValueError("id cannot be <= 0")
             self.id = id
 
     @classmethod
@@ -185,6 +181,12 @@ class Base:
         from models.square import Square
         filename = cls.__name__ + ".csv"
         with open(filename, 'w') as fp:
+            if list_objs is None:
+                fp.write("[]")
+                return
+            if len(list_objs) == 0:
+                fp.write("[]")
+                return
             for obj in list_objs:
                 if type(obj) is Rectangle:
                     s = f"{obj.id},{obj.width},{obj.height},{obj.x},{obj.y}\n"

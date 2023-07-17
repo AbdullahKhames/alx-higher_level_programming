@@ -57,7 +57,8 @@ class Square(Rectangle):
         if args:
             for k, v in enumerate(args):
                 att = attrs[k]
-                Rectangle.none_checker(v)
+                if k == 0 and v is None:
+                    continue
                 Rectangle.int_validator(v, att)
                 if att in ['x', 'y']:
                     Rectangle.dimensions_validator(v, att)
@@ -68,7 +69,8 @@ class Square(Rectangle):
                     self.height = v
         elif kwargs:
             for key, value in kwargs.items():
-                Rectangle.none_checker(value)
+                if key == 'id' and value is None:
+                    continue
                 Rectangle.int_validator(value, key)
                 if key in ['x', 'y']:
                     Rectangle.dimensions_validator(value, key)
