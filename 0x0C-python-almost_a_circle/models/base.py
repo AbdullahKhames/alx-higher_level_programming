@@ -8,6 +8,11 @@ import turtle
 
 
 def square_lines_to_dicts(lines=None):
+    """
+    function to convert square lines to objescts
+    :param lines: lines
+    :return: objects
+    """
     from models.square import Square
     if lines is None:
         return {}
@@ -20,6 +25,11 @@ def square_lines_to_dicts(lines=None):
 
 
 def rect_lines_to_dicts(lines):
+    """
+    function to convert rectangle lines to objescts
+    :param lines: lines
+    :return: objects
+    """
     from models.rectangle import Rectangle
     if lines is None:
         return {}
@@ -54,6 +64,11 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs=None):
+        """
+        function to save to file
+        :param list_objs: list to be saved
+        :return:
+        """
         fileName = cls.__name__ + ".json"
         with open(fileName, 'w') as fp:
             dictionaries = []
@@ -66,18 +81,33 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries=None):
+        """
+        function to convert to json
+        :param list_dictionaries: list to be converted
+        :return: json strng
+        """
         if list_dictionaries is None:
             return '[]'
         return json.dumps(list_dictionaries)
 
     @staticmethod
     def from_json_string(json_string):
+        """
+        function to retrive from json string
+        :param json_string: json string
+        :return: list of dictionary
+        """
         if json_string is None:
             return []
         return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
+        """
+        method to create instance of a given class
+        :param dictionary: dictionary to create from
+        :return: obj
+        """
         from models.rectangle import Rectangle
         from models.square import Square
         obj = None
@@ -90,6 +120,10 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
+        """
+        loads from file
+        :return: return instances
+        """
         instances = []
         with open(cls.__name__ + ".json") as fp:
             json_string = fp.read()
@@ -103,6 +137,12 @@ class Base:
 
     @staticmethod
     def draw(list_rectangles, list_squares):
+        """
+        function to draw objects
+        :param list_rectangles: listof rects to draw
+        :param list_squares: listof squares to draw
+        :return: none
+        """
         t = turtle.Turtle()
 
         t.speed(1)
@@ -137,6 +177,11 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
+        """
+        method to save to file
+        :param list_objs: list of objs
+        :return: none
+        """
         from models.rectangle import Rectangle
         from models.square import Square
         filename = cls.__name__ + ".csv"
@@ -151,6 +196,10 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
+        """
+        load form file
+        :return: objects
+        """
         filename = cls.__name__ + ".csv"
         with open(filename) as fp:
             lines = fp.readlines()

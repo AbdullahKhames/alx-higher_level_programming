@@ -26,7 +26,8 @@ class Square(Rectangle):
         overrides the str function
         :return: return string rep of class
         """
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
+        return "[Square] ({}) {}/{} - {}".format(self.id,
+                                                 self.x, self.y, self.width)
 
     @property
     def size(self):

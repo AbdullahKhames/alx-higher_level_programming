@@ -188,7 +188,8 @@ class Rectangle(Base):
         """
         :return: a string representation of class
         """
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+        return "[Rectangle] ({}) {}/{} - {}/{}"\
+            .format(self.id, self.x, self.y, self.width, self.height)
 
     @staticmethod
     def int_validator(value, s):
@@ -225,5 +226,5 @@ class Rectangle(Base):
             raise ValueError(s + ' must be >= 0')
 
     def to_dictionary(self):
-        return {'x': self.x, 'y': self.y, 'id': self.id, 'height': self.height, 'width': self.width}
-
+        return {'x': self.x, 'y': self.y, 'id': self.id,
+                'height': self.height, 'width': self.width}
