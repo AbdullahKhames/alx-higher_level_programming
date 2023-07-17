@@ -108,7 +108,7 @@ class test_disp2(unittest.TestCase):
         ]
         Rectangle.save_to_file(lse)
         ch = None
-        with open("Rectangle.json") as fp:
+        with open("../Rectangle.json") as fp:
             ch = fp.read()
 
         self.assertEqual(
@@ -121,7 +121,7 @@ class test_disp2(unittest.TestCase):
         lse = []
         Rectangle.save_to_file(lse)
         ch = None
-        with open("Rectangle.json") as fp:
+        with open("../Rectangle.json") as fp:
             ch = fp.read()
 
         self.assertEqual(

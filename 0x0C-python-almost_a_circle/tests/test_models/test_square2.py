@@ -71,13 +71,13 @@ class TestSquare2(unittest.TestCase):
 
     def test_square11(self):
         Square.save_to_file([self.square3, self.square4])
-        with open("Square.json") as fp:
+        with open("../Square.json") as fp:
             self.assertEqual('[{"x": 5, "y": 10, "id": 10, "size": 6}, {"x": 3, "y": 2, "id": 71, "size": 2}]',
                              fp.read())
 
     def test_square12(self):
         Square.save_to_file(None)
-        with open("Square.json") as fp:
+        with open("../Square.json") as fp:
             self.assertEqual('[]',
                              fp.read())
 
