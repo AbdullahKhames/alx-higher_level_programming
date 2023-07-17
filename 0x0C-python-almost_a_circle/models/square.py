@@ -82,4 +82,8 @@ class Square(Rectangle):
                         self.height = value
 
     def to_dictionary(self):
+        """
+        methid returns dictionary rep of class
+        :return: dictionary rep of class
+        """
         return {'x': self.x, 'y': self.y, 'id': self.id, 'size': self.size}
