@@ -1,2 +1,3 @@
 -- sql intro script
-show databases
+show database
+s
