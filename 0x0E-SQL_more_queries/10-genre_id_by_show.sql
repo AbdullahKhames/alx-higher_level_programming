@@ -1,5 +1,5 @@
 -- script to listt geres id by show
-SELECT s.title, sg.id
+SELECT s.title, sg.id AS genre_id
 FROM tv_shows s
 INNER JOIN tv_show_genres sg
 ON s.id = sg.show_id
