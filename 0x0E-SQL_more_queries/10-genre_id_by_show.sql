@@ -1,5 +1,4 @@
 -- script to listt geres id by show
-USE hbtn_0d_tvshows;
 SELECT s.title, g.id
 FROM tv_shows s
 INNER JOIN tv_show_genres sg
