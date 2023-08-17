@@ -8,5 +8,5 @@ ON s.id = sg.show_id
 INNER JOIN tv_show_ratings r
 ON s.id = r.show_id
 GROUP BY g.name
-ORDER BY SUM(r.rate)
-DESC;
+ORDER BY SUM(r.rate) DESC,
+g.name ASC;
