@@ -1,8 +1,5 @@
 #!/usr/bin/node
-const Rectangle = require('./3-rectangle');
+const esrever = require('./8-esrever').esrever;
 
-const r1 = new Rectangle(2, 3);
-r1.print();
-
-const r2 = new Rectangle(10, 5);
-r2.print();
+console.log(esrever([1, 2, 3, 4, 5]));
+console.log(esrever(["School", 89, { id: 12 }, "String"]));
