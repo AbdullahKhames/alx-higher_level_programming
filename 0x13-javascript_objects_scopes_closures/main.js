@@ -1,7 +1,15 @@
 #!/usr/bin/node
-const converter = require('./10-converter.js').converter;
+const converter = require('./10-converter').converter;
 
-let myConv = converter(10);
-myConv(15);
-myConv = converter(16);
-myConv(15);
+let myConverter = converter(10);
+
+console.log(myConverter(2));
+console.log(myConverter(12));
+console.log(myConverter(89));
+
+
+myConverter = converter(16);
+
+console.log(myConverter(2));
+console.log(myConverter(12));
+console.log(myConverter(89));
