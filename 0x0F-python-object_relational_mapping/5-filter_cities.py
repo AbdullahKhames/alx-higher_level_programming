@@ -21,7 +21,7 @@ def filteredCities(uName, pwd, dbName, stateName):
         INNER JOIN states s \
         ON s.id = c.state_id \
         WHERE s.name = "{}"\
-        ORDER BY c.id ASC'.format(stateName)
+        ORDER BY c.id ASC'.format(stripSearchedStr(stateName))
     cur = dv.cursor()
     cur.execute(sql_query)
     rows = cur.fetchall()
@@ -33,6 +33,11 @@ def filteredCities(uName, pwd, dbName, stateName):
         print(row[0], end="")
         first_iteration = False
     print()
+
+
+def stripSearchedStr(searched):
+    return searched.split(';')[0]
+
 
 if __name__ == '__main__':
     """
