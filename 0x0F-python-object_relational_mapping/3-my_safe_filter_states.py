@@ -17,12 +17,16 @@ def searchStates(uName, pwd, dbName, searched):
                          database=dbName,
                          port=3306)
     sql_query = 'SELECT * FROM states s WHERE \
-        s.name = \"{}\" ORDER BY s.id ASC'.format(searched)
+        s.name = \"{}\" ORDER BY s.id ASC'.format(stripSearchedStr(searched))
     cur = dv.cursor()
     cur.execute(sql_query)
     rows = cur.fetchall()
     for row in rows:
         print(row)
+
+
+def stripSearchedStr(searched):
+    return searched.split(';')[0]
 
 
 if __name__ == '__main__':
