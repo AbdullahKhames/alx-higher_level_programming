@@ -17,7 +17,7 @@ def searchStates(uName, pwd, dbName, searched):
                          database=dbName,
                          port=3306)
     sql_query = 'SELECT * FROM states s WHERE \
-        s.name = \"{}\" ORDER BY s.id ASC'.format(searched)
+        s.name = \"{}\"'.format(searched)
     cur = dv.cursor()
     cur.execute(sql_query)
     rows = cur.fetchall()

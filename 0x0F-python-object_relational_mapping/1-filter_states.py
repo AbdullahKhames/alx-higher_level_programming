@@ -13,10 +13,8 @@ def filterStates(uName, pwd, dbName):
     """
     dv = MySQLdb.connect(host='localhost', user=uName, password=pwd,
                          database=dbName, port=3306)
-    sql_query = """
-SELECT * FROM states s WHERE
- s.name LIKE 'N%' ORDER BY s.id ASC
-    """
+    sql_query = "SELECT * FROM states s\
+        WHERE s.name LIKE 'N%' ORDER BY s.id ASC"
     cur = dv.cursor()
     cur.execute(sql_query)
     rows = cur.fetchall()
