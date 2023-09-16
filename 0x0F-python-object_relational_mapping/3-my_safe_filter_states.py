@@ -23,6 +23,8 @@ def searchStates(uName, pwd, dbName, searched):
     rows = cur.fetchall()
     for row in rows:
         print(row)
+    cur.close()
+    dv.close()
 
 
 def stripSearchedStr(searched):

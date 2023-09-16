@@ -26,6 +26,8 @@ def getCities(uName, pwd, dbName):
     rows = cur.fetchall()
     for row in rows:
         print(row)
+    cur.close()
+    dv.close()
 
 
 if __name__ == '__main__':

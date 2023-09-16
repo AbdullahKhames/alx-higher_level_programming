@@ -20,6 +20,9 @@ def connect(uName, pwd, dbName):
     for row in rows:
         print(row)
 
+    cur.close()
+    dv.close()
+
 
 if __name__ == '__main__':
     """

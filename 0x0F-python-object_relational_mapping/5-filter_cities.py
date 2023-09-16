@@ -33,6 +33,8 @@ def filteredCities(uName, pwd, dbName, stateName):
         print(row[0], end="")
         first_iteration = False
     print()
+    cur.close()
+    dv.close()
 
 
 def stripSearchedStr(searched):
