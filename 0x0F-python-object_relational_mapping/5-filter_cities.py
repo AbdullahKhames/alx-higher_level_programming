@@ -7,15 +7,29 @@ from sys import argv
 import MySQLdb
 
 
-def filteredCities(uName, pwd, dbName, stateName):
-    """
-    filteredCities function
-    """
-    dv = MySQLdb.connect(host='localhost',
+def getConnection(uName, pwd, dbName, stateName):
+    return MySQLdb.connect(host='localhost',
                          user=uName,
                          passwd=pwd,
                          database=dbName,
                          port=3306)
+
+
+def displayRows(rows):
+    first_iteration = True
+    for row in rows:
+        if not first_iteration:
+            print(", ", end="")
+        print(row[0], end="")
+        first_iteration = False
+    print()
+
+
+def filteredCities(uName, pwd, dbName, stateName):
+    """
+    filteredCities function
+    """
+    dv = getConnection(uName, pwd, dbName, stateName)
     sql_query = 'SELECT c.name \
         FROM cities c \
         INNER JOIN states s \
@@ -25,14 +39,7 @@ def filteredCities(uName, pwd, dbName, stateName):
     cur = dv.cursor()
     cur.execute(sql_query)
     rows = cur.fetchall()
-    first_iteration = True
-
-    for row in rows:
-        if not first_iteration:
-            print(", ", end="")
-        print(row[0], end="")
-        first_iteration = False
-    print()
+    displayRows(rows)
     cur.close()
     dv.close()
 
