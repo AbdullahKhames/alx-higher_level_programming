@@ -5,7 +5,7 @@ from sqlalchemy import create_engine, text
 
 
 def run_query():
-    engine = create_engine("mysql://root:@localhost/test")
+    engine = create_engine("mysql://root:1395760@localhost/test")
     
     sql_query = text("SELECT * FROM employee")
 
