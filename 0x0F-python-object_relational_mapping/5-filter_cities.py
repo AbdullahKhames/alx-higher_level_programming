@@ -9,10 +9,10 @@ import MySQLdb
 
 def getConnection(uName, pwd, dbName, stateName):
     return MySQLdb.connect(host='localhost',
-                         user=uName,
-                         passwd=pwd,
-                         database=dbName,
-                         port=3306)
+                           user=uName,
+                           passwd=pwd,
+                           database=dbName,
+                           port=3306)
 
 
 def displayRows(rows):
