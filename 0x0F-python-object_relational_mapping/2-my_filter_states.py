@@ -19,8 +19,9 @@ SELECT * FROM states s WHERE
     """
     cur = dv.cursor()
     cur.execute(sql_query, (searched, ))
-    row = cur.fetchone()
-    print(row)
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
 
 
 if __name__ == '__main__':
