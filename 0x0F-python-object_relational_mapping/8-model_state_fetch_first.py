@@ -27,7 +27,7 @@ def retrieveStates(userName, pwd, dbName):
     session = Session(bind=engine)
     state = session.query(State).order_by(State.id).first()
     if state is None:
-        print('Nothing ')
+        print('Nothing')
     else:
         print(f"{state.id}: {state.name}")
 
