@@ -17,6 +17,7 @@ class State(Base):
     id = Column(INTEGER, primary_key=True)
     name = Column(String(128), nullable=False)
 
+
 if __name__ == '__main__':
     engine = create_engine('mysql://root:1395760@localhost:3306/hbtn_0e_6_usa')
     Base.metadata.create_all(engine)
