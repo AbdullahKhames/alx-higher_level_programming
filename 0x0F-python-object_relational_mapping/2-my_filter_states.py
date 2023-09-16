@@ -11,14 +11,15 @@ def searchStates(uName, pwd, dbName, searched):
     """
     searchStates function
     """
-    dv = MySQLdb.connect(host='localhost', user=uName, password=pwd,
-                         database=dbName, port=3306)
-    sql_query = """
-SELECT * FROM states s WHERE
- s.name = %s ORDER BY s.id ASC
-    """
+    dv = MySQLdb.connect(host='localhost',
+                         user=uName,
+                         passwd=pwd,
+                         database=dbName,
+                         port=3306)
+    sql_query = 'SELECT * FROM states s WHERE \
+        s.name = \"{}\" ORDER BY s.id ASC'.format(searched)
     cur = dv.cursor()
-    cur.execute(sql_query, (searched, ))
+    cur.execute(sql_query)
     rows = cur.fetchall()
     for row in rows:
         print(row)
