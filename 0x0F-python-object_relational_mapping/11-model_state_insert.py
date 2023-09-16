@@ -25,10 +25,10 @@ def retrieveStates(userName, pwd, dbName):
     retrieve States
     """
     session = getSession(userName, pwd, dbName)
-    state = State(name='Louisiana')
-    session.add(state)
-    session.flush()
-    print(state.id)
+    new_state = State(name='Louisiana')
+    session.add(new_state)
+    session.commit()
+    print(new_state.id)
 
 
 if __name__ == '__main__':
