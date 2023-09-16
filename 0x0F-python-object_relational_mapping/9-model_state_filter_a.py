@@ -25,7 +25,8 @@ def retrieveStates(userName, pwd, dbName):
     retrieve States
     """
     session = getSession(userName, pwd, dbName)
-    for state in session.query(State).filter(State.name.like("%a%")).order_by(State.id).all():
+    for state in session.query(State).filter(State.name.like("%a%"))\
+            .order_by(State.id).all():
         print(f"{state.id}: {state.name}")
 
 
