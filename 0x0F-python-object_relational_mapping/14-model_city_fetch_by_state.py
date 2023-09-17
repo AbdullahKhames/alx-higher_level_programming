@@ -27,9 +27,9 @@ def fetchCitiesByState(userName, pwd, dbName):
     """
     session = getSession(userName, pwd, dbName)
     query = session.query(State)\
-                    .join(State.cities)\
-                    .options(subqueryload(State.cities))\
-                    .order_by(City.id)
+                   .join(State.cities)\
+                   .options(subqueryload(State.cities))\
+                   .order_by(City.id)
     states = query.all()
     for state in states:
         for city in state.cities:
