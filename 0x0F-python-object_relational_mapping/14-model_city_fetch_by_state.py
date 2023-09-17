@@ -26,7 +26,9 @@ def fetchCitiesByState(userName, pwd, dbName):
     update State
     """
     session = getSession(userName, pwd, dbName)
-    states = session.query(State).options(subqueryload(State.cities)).order_by(State.id).all()
+    states = session.query(State)\
+                    .options(subqueryload(State.cities))\
+                    .order_by(State.id).all()
     for state in states:
         for city in state.cities:
             print(f"{state.name}: ({city.id}) {city.name}")
