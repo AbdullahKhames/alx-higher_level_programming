@@ -20,5 +20,4 @@ class State(Base):
 
 
 if __name__ == '__main__':
-    engine = create_engine('mysql://root:1395760@localhost:3306/hbtn_0e_6_usa')
-    Base.metadata.create_all(engine)
+    pass
