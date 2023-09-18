@@ -43,6 +43,4 @@ if __name__ == '__main__':
     """
     retrieve States
     """
-    engine = create_engine('mysql://root:1395760@localhost:3306/hbtn_0e_6_usa')
-    Base.metadata.create_all(engine)
     createStateWithCities(argv[1], argv[2], argv[3])
