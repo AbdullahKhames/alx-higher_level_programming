@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-module to load all cities
+module to load all cities and all states
 """
 
 

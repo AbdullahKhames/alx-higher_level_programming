@@ -1,12 +1,9 @@
 #!/usr/bin/python3
-
-
 """
 module to define city
 """
 from sqlalchemy import Column, INTEGER, String, ForeignKey
 from sqlalchemy.orm import relationship
-
 from model_state import Base, State
 
 
