@@ -3,6 +3,6 @@
 url="$1"
 status_code=$(curl --head --silent --write-out "%{http_code}" "$url")
 if [ "$status_code" -eq 200 ]; then
-  response=$(curl -s "$url")
+  response=$(curl -sL "$url")
   echo "$response"
 fi
