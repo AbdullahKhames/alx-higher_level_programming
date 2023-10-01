@@ -3,5 +3,5 @@
 url="$1"
 status_code=$(curl --silent --head --output /dev/null --write-out "%{http_code}" "$url")
 if [ "$status_code" -eq 200 ]; then
-  echo "$(curl -sL "$url")"
+  echo "$(curl -s "$url")"
 fi
