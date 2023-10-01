@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# function to get peak
 def find_peak(list_of_integers):
     if list_of_integers is None or len(list_of_integers) == 0:
         return None
