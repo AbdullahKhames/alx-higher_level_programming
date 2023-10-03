@@ -6,7 +6,7 @@ from sys import argv
 
 def connect():
     """function to connect to check status documented"""
-    data = argv[2]
+    data = {'email', argv[2]}
     url = argv[1]
     try:
         resp = get(url, data=data)
