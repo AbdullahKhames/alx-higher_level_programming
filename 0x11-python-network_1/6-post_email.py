@@ -6,11 +6,11 @@ from sys import argv
 
 def connect():
     """function to connect to check status documented"""
+    data = argv[2]
     url = argv[1]
     try:
-        resp = get(url)
-        req_id = resp.headers['X-Request-Id']
-        print(req_id)
+        resp = get(url, data=data)
+        print(resp.text)
     except exceptions.HTTPError as ex:
         print(f'Error code: {ex.getcode()}')
 
