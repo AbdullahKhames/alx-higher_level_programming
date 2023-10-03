@@ -13,6 +13,7 @@ def connect():
     data = {'q': searched}
     url = 'http://0.0.0.0:5000/search_user'
     resp = post(url, params=data)
+    print(resp.url)
     if resp:
         text = resp.text
         print(text)
