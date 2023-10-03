@@ -27,8 +27,6 @@ def connect():
 
 def is_json(text):
     """function to check if str is json or not"""
-    if not type(text) == str:
-        return False
     if not text[0] == '{' and not text[-1] == '}':
         return False
     return True
