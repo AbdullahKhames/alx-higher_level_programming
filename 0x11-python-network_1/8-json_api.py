@@ -6,6 +6,9 @@ from sys import argv
 
 def connect():
     """function to connect to check status documented"""
+    if len(argv) < 2:
+        print('No result')
+        return
     if len(argv) < 3:
         searched = ""
     else:
