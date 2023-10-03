@@ -7,12 +7,11 @@ from sys import argv
 def connect():
     """function to connect to check status documented"""
     url = argv[1]
-    try:
-        resp = get(url)
+    resp = get(url)
+    if resp:
         print(resp.text)
-    except exceptions.HTTPError as ex:
-        print(f'Error code: {ex.errno}')
-
+    else:
+        print(f'Error code: {resp.status_code}')
 
 if __name__ == '__main__':
     """function to connect to check status documented"""
