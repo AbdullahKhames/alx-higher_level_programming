@@ -12,7 +12,7 @@ def connect():
         print(f'\t- type: {type(body)}')
         print(f'\t- content: {body}')
     except exceptions.HTTPError as ex:
-        print(f'Error code: {ex.getcode()}')
+        print(f'Error code: {ex.errno}')
 
 
 if __name__ == '__main__':

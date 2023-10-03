@@ -12,7 +12,7 @@ def connect():
         req_id = resp.headers['X-Request-Id']
         print(req_id)
     except exceptions.HTTPError as ex:
-        print(f'Error code: {ex.getcode()}')
+        print(f'Error code: {ex.errno}')
     except KeyError as ex:
         pass
 
