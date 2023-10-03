@@ -1,8 +1,11 @@
 #!/usr/bin/python3
+"""module documented"""
 from urllib import request
 
 
 def connect():
+    """function to connect to check status documented"""
+
     with request.urlopen('https://alx-intranet.hbtn.io/status') as resp:
         body = resp.read()
     char_set = resp.headers.get_content_charset()
@@ -14,4 +17,5 @@ def connect():
 
 
 if __name__ == '__main__':
+    """function to connect to check status documented"""
     connect()
