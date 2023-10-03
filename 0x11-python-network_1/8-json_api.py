@@ -13,16 +13,14 @@ def connect():
     data = {'q': searched}
     url = 'http://0.0.0.0:5000/search_user'
     resp = post(url, data=data)
-    print(resp.url)
     if resp:
         text = resp.text
-        print(text)
         if len(text) == 3:
             print('No result')
         elif not is_json(text):
             print('Not a valid JSON')
         else:
-            print(f'[{text}]')
+            print(f'[{text["id"]}] {text["name"]}')
     else:
         print(f'Error code: {resp.status_code}')
 
