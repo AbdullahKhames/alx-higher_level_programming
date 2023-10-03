@@ -12,8 +12,8 @@ def connect():
     req = request.Request(argv[1], data)
     with request.urlopen(req) as resp:
         body = resp.read()
-    resp_id = resp.getheader('X-Request-Id')
-    print(resp_id)
+    decoded_body = resp.decode('utf-8')
+    print(decoded_body)
 
 
 if __name__ == '__main__':
