@@ -14,7 +14,7 @@ def connect():
     url = 'http://0.0.0.0:5000/search_user'
     resp = post(url, data=data)
     if resp:
-        text = resp.text
+        text = resp.json()
         if len(text) == 3:
             print('No result')
         elif not is_json(text):
