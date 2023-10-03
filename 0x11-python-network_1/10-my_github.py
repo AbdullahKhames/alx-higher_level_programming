@@ -13,7 +13,7 @@ def connect():
         text = resp.json()
         print(text["id"])
     else:
-        print(f'Error code: {resp.status_code}')
+        print(f'None')
 
 
 if __name__ == '__main__':
