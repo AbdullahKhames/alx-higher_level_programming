@@ -15,6 +15,7 @@ def connect():
     resp = post(url, params=data)
     if resp:
         text = resp.text
+        print(text)
         if len(text) == 3:
             print('No result')
         elif not is_json(text):
