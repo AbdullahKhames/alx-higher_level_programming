@@ -7,7 +7,10 @@ def connect():
         body = resp.read()
     char_set = resp.headers.get_content_charset()
     decoded_body = body.decode(char_set)
-    print(decoded_body)
+    print('Body response:')
+    print(f'\t- type: {type(body)}')
+    print(f'\t- content: {body}')
+    print(f'\t- utf8 content: {decoded_body}')
 
 
 if __name__ == '__main__':
