@@ -33,6 +33,7 @@ def is_json(text):
         return False
     return True
 
+
 if __name__ == '__main__':
     """function to connect to check status documented"""
     connect()
