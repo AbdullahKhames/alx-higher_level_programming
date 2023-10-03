@@ -15,10 +15,12 @@ def connect():
     resp = post(url, data=data)
     if resp:
         text = resp.json()
-        if len(text) == 3:
+        if not text:
             print('No result')
+            return
         elif not is_json(text):
             print('Not a valid JSON')
+            return
         else:
             print(f'[{text["id"]}] {text["name"]}')
     else:
