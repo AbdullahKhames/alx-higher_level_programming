@@ -13,6 +13,8 @@ def connect():
         print(req_id)
     except exceptions.HTTPError as ex:
         print(f'Error code: {ex.getcode()}')
+    except KeyError as ex:
+        pass
 
 
 if __name__ == '__main__':
