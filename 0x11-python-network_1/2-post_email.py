@@ -12,7 +12,7 @@ def connect():
     req = request.Request(argv[1], data)
     with request.urlopen(req) as resp:
         body = resp.read()
-    decoded_body = resp.decode('utf-8')
+    decoded_body = body.decode('utf-8')
     print(decoded_body)
 
 
