@@ -13,6 +13,7 @@ def connect():
     else:
         print(f'Error code: {resp.status_code}')
 
+
 if __name__ == '__main__':
     """function to connect to check status documented"""
     connect()
