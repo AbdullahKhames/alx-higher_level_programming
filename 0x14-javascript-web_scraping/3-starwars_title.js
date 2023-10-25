@@ -1,8 +1,8 @@
 #!/usr/bin/node
 // hitting starwars api
 const request = require('request');
-movieID = process.argv[2];
-fullUrl = `https://swapi-api.alx-tools.com/api/films/${movieID}`
+const movieID = process.argv[2];
+const fullUrl = `https://swapi-api.alx-tools.com/api/films/${movieID}`;
 request(fullUrl, (error, response) => {
   if (error) {
     console.error(error);
@@ -10,4 +10,4 @@ request(fullUrl, (error, response) => {
     const data = JSON.parse(response.body);
     console.log(data.title);
   }
-})
+});
