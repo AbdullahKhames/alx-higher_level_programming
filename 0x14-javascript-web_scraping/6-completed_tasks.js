@@ -25,7 +25,7 @@ request(options, (err, resp, body) => {
         counter++;
       }
     }
-    if (counter !== 0){
+    if (counter !== 0) {
       completedTasks[userId] = counter;
     }
     console.log(completedTasks);
