@@ -11,7 +11,7 @@ request(options, (error, response, body) => {
   if (error) {
     console.error(error);
   } else {
-    fileSys.writeFile(process.argv[3], body, 'utf-8', (err) => {
+    fileSys.appendFile(process.argv[3], body, 'utf-8', (err) => {
       if (err) {
         console.error(err);
       }
