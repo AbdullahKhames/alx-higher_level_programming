@@ -17,7 +17,7 @@ request(options, (err, resp, body) => {
       const currentUserId = userId;
       const task = tasks[i];
       userId = task.userId;
-      if (userId !== currentUserId) {
+      if (userId !== currentUserId && counter !== 0) {
         completedTasks[currentUserId] = counter;
         counter = 0;
       }
